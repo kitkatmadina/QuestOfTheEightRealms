@@ -1,0 +1,733 @@
+:: StoryTitle
+The Quest Of the Eight Realms
+
+
+:: StoryData
+{
+  "ifid": "9D5F7422-676D-479D-A4D0-B67C06097BDB",
+  "format": "Harlowe",
+  "format-version": "3.3.9",
+  "start": "Title Card",
+  "tag-colors": {
+    "StoryCard": "blue",
+    "Menu": "yellow",
+    "CharacterCard": "purple",
+    "InventoryTag": "red",
+    "Function": "orange",
+    "Dialogue": "green",
+    "SecretCard": "red",
+    "header": "blue"
+  },
+  "zoom": 0.6
+}
+
+
+:: Anmol [CharacterCard exclude_history] {"position":"1275,325","size":"100,100"}
+=|=
+<img src="https://lh3.googleusercontent.com/d/1c6NniPVtpcUvil1_XoMY-_IU53Ny_Ucp" width="600">
+=|=
+## Anmol
+
+Hailing from a bustling trade city, Anmol’s resourcefulness was honed through a life of constant innovation and challenge. Her ingenious mind and optimism transform everyday obstacles into opportunities for success.
+|==|
+($last_passage:)
+
+
+:: Caleb [CharacterCard exclude_history] {"position":"900,325","size":"100,100"}
+=|=
+<img src="https://lh3.googleusercontent.com/d/1WZQy24tQVqFmJcJSnwr1_kI_swUmsbCq
+" width="600">
+=|=
+## Caleb
+
+Once a loyal soldier betrayed by his own, Caleb bears the scars of battles fought for lost honor. His unwavering strength and sense of justice drive him to protect the innocent at any cost.
+|==|
+($last_passage:)
+
+
+:: Chapter One {"position":"875,600","size":"100,100"}
+{
+($set_background: "Settings/Silver%20Stag%20Inn.png")
+}
+(align: "=><=")[''The Tavern Meeting'']
+{On a cool autumn evening, the eight gather at The Silver Stag Inn.  
+<audio id="background-audio" loop style="display: none;">
+    <source src="https://kitkatmadina.github.io/QuestOfTheEightRealms/Audio/SilverStagInn.wav" type="audio/wav">
+</audio>
+($audio_button:)
+}
+Tony, the fearless leader, speaks first:
+//(align:"=><=")["Friends, legends tell of the Heart of Aranthor hidden deep in the Whispering Woods. It is said to hold powers beyond mortal ken. Shall we seek it?"]//
+Lucas, the cunning rogue, eyes  the map spread on the table while Micah, the wise sage, pores over ancient texts. (click-goto: "the map", "Lucas's Map") (click-goto: "ancient texts", "Micah's Texts") Kirsten, with her compassionate heart, listens intently, and Anmol, ever resourceful, readies her gear. Sara, gentle but determined, stands by Caleb—the strong warrior—and Danish, whose mysterious past hints at hidden knowledge of the artifact.
+{
+//''Choose:''//
+* $choice[''[[Gather more information->Chapter Two Subplot]]''] //(Recommended)// Visit the town's archives and consult with the elderly historian who might reveal secrets of the artifact.
+* $choice[''[[Embark On the Journey Immediately->Chapter Two]] ''] Leave Brindleport at dawn, trusting the party's unity and the map's guidance.
+
+}
+
+($save:)
+
+
+:: Chapter Two {"position":"1050,600","size":"100,100"}
+(if: $map_revealed is not 1)[(set: num-type $map_revealed to 1)
+
+(text-style: "superscript")[//Map has been added to Inventory//]]
+
+($save:)
+
+
+:: Chapter Two Subplot {"position":"1000,725","size":"100,100"}
+# Secrets of the Archive
+[$objective[//Gain the Historian's Approval to reveal more secrets//]]
+[In Brindleport’s ancient archives, the party gathers around a heavy oak table in a dim, hushed hall lined with dusty tomes and faded maps. The venerable historian, a wizened figure with eyes that seem to hold centuries of lore, welcomes them warmly. ]
+|==
+(collapse:)[<img src="https://lh3.googleusercontent.com/d/19pAbwHrLruQ3sX83JJRQ83jVbU6Hdswm" width="400">]
+=||=
+[“You seek the truth of the Heart of Aranthor,” he murmurs, guiding them to a secluded alcove where fragile scrolls and leather-bound volumes await.]
+
+[* $choice[''Admit to it'']]<admit|
+[* $choice[''Deny it'']]<deny|
+[* $choice[''Stay Silent'']]<silent|
+{|admit_response)[The historian is pleased with your honesty. He opens his arms in a welcoming gesture before leading you deeper into the archives.(set: $historian_approval to 7)]
+|deny_response)[The historian frowns, disappointed by the obvious lie.(set: $historian_approval to 3)
+(box:"XXXXXXXXX=")["This is a place of knowledge and truth," he apprehends. "Your wariness will hinder you more than it will help."]
+Though he is reluctant, he takes the party deeper into the archives.
+]
+|neutral_response)[The historian nods his head, then gestures for the party to follow him into the archives.(set: $historian_approval to 5)]
+}
+(click: ?admit)[(hide:?deny) (hide:?silent) (show: ?admit_response) [[Continue->Scene2S_1]]]
+(click: ?deny)[ (hide:?admit) (hide:?silent) (show: ?deny_response) [[Continue->Scene2S_1]]]
+(click: ?silent)[(hide:?deny) (hide:?admit)(show: ?neutral_response) [[Continue->Scene2S_1]]]
+|==|
+
+($save:)
+
+
+
+
+
+:: Character Page [Menu] {"position":"875,475","size":"100,100"}
+{ (set: $boy to (text-size: .75)) (set: $girl to (text-size: .75))
+<table width="700" horizontal-align="center">
+    <tr>
+  <td>
+   <img src="https://lh3.googleusercontent.com/d/1wTHM-MTTSjwsxEWdGDXf_8iXukNfqyYw" width=210>
+        </td><td>
+    <img src="https://lh3.googleusercontent.com/d/13DBA5zyXpuq-H0QRCw2KbvazdBJvcEol" width=210>
+        </td> <td>
+      <img src="https://lh3.googleusercontent.com/d/1ZS7eb3C5XBIaVtvQhL5DZmpX6XCOgMLX" width=210>
+        </td> <td>
+      <img src="https://lh3.googleusercontent.com/d/1uFZJR9iPXFbDJrHCMKqwHYc0digsBjTk" width=210>
+        </td> <td>
+     <img src="https://lh3.googleusercontent.com/d/1WZQy24tQVqFmJcJSnwr1_kI_swUmsbCq
+" width=210>
+        </td>
+       </tr>
+<tr>
+    <td>
+        	$boy[[Tony]] 
+        </td>
+        <td>
+        	$boy[[Lucas]]
+        </td>
+        <td>
+        	$boy[[Micah]]
+        </td>
+        <td>
+        	$boy[[Danish]]
+        </td>
+        <td>
+        	$boy[[Caleb]]
+        </td>
+       </tr>
+    <tr>
+    	<td>
+        	<img src="https://lh3.googleusercontent.com/d/1_XlhGHpQN5cEAvgiuZ86nt0Vo9rouDiO" width=210>
+        </td>
+        <td>
+        	<img src="https://lh3.googleusercontent.com/d/1Kc-EP2lphcf97nak-TgObp4koo8KNIIW" width=210>
+        </td>
+        <td>
+        	<img src="https://lh3.googleusercontent.com/d/1c6NniPVtpcUvil1_XoMY-_IU53Ny_Ucp" width=210>
+        </td>
+    </tr>
+    <tr>
+    	<td>
+        	$girl[[Kirsten]]
+        </td>
+        <td>
+        	$girl[[Sara]]
+        </td>
+        <td>
+        	$girl[[Anmol]]
+        </td>
+    </tr>
+</table>
+$title[<h1>[[Start The Adventure->Setting 1]]</h1>]
+}
+
+
+:: Credits {"position":"300,625","size":"100,100"}
+# Welcome to (text-style:"underline")[''The Quest of The Eight Realms'']
+(text-style:"italic")[A CYO Adventure Game by Kirsten Madina*]
+^^(align:"<==")+(box:"===XXXXXXXXXX=======")[//*With special help from ChatGPT//]^^
+All game mechanics were developed by //moi// using Twine Harlow 2.0 platform. 
+
+The overarching story was developed by ChatGPT. I provided curated prompts to the AI model in order to expand the story into a playable CYOA style game. 
+
+All images were developed using the DALL-E image generation model via prompts provided by myself and ChatGPT.
+
+Developed using Twine Harlow 2.0
+[[Return to Title Card->Title Card]] 
+
+
+:: Custom Macros [Function header] {"position":"425,75","size":"100,100"}
+{
+{(set: $initialize_variables to (macro: [
+	(output:)[
+    (set: $characters to (a: "Tony", "Lucas", "Micah", "Danish", "Caleb", "Kirsten", "Sara", "Anmol"))
+    ($set_background: "Characters/all_characters_blurred.png")
+    (set: $character_map to (dm:))
+    (for: each _character, ...$characters)[
+        (set: $character_map to $character_map + (dm: _character, (dm: "alive", true)))
+    ]
+    (set: $backpack to (a:))
+]
+]
+)
+)
+}
+
+
+
+(set: $last_passage to (macro: [
+	(set: _last_passage to (history: where its tags does not contain "exclude_history")'s last)
+	(output: )[(link-goto: "Return", _last_passage)]
+])
+)
+
+(set: $audio_button to (macro: [
+	(set: _button to "<button id='play-music' class='audio-btn'><i class='fa-solid fa-play'></i></button>
+<script>
+  $('#play-music').click(function () {
+        $('#background-audio')[0].play();
+        $(this).hide(); // Hide button after play
+    });
+</script>")
+	(output:)[_button]
+])
+)
+
+(set: $save to (partial: "save-game", $save_file))
+
+(set: $set_background to (macro: string-type _bg, [
+  (set: _image_repo to "https://raw.githubusercontent.com/kitkatmadina/QuestOfTheEightRealms/main/")
+	(output:)[
+    (enchant: ?page, (bg: _image_repo + _bg))
+    ]
+])
+)
+
+
+
+}
+
+
+:: Danish [CharacterCard exclude_history] {"position":"775,325","size":"100,100"}
+=|=
+<img src="https://lh3.googleusercontent.com/d/1uFZJR9iPXFbDJrHCMKqwHYc0digsBjTk" width="600">
+=|=
+## Danish
+
+Emerging from shadows with secrets of a forgotten past, Danish carries an air of mystery and ancient power. His enigmatic presence conceals a deep bond with lost magic and timeless lore.
+|==|
+($last_passage:)
+
+
+:: Exposition 1 {"position":"675,475","size":"100,100"}
+[In the land of Eldrath, where magic weaves through ancient forests and forgotten ruins, eight brave adventurers have been drawn together by fate.]<expo|
+(text-style: "sway")[$title[<h2>[[Meet the Characters ->Character Page]]</h2>]]
+{($initialize_variables:)}
+(enchant: ?expo's chars, via (t8n-delay:pos * 30) + (t8n:'instant')) 
+($save:)
+
+
+:: Gameplay [exclude_history] {"position":"300,450","size":"100,100"}
+{
+$title[Gameplay]
+#### Your Goal:
+* Make $choice[choices] and complete $objective[objectives] to progress the story. 
+* $objective[Keep Track Of Your Objectives]
+* $choice[Choose wisely.]
+#### Sidebar Tools:
+* Info Icon allows you to return to this page at any time.
+* Save button will save your current page.
+* Restart button will return your game to the last available save. 
+#### Inventory:
+* (link-goto: "Add Items to your Inventory only by clicking on them to reveal their uses and secrets.", "Gameplay")
+* Your Inventory will appear on the top of each page. Items are hidden by default; click the backpack icon to reveal them. 
+
+#### Characters:
+* This story has 8 trackable characters: Tony, Lucas, Micah, Kirsten, Anmol, Sara, Caleb, and Danish. 
+* You can view a character's profile by clicking on their name. Their profile will be updated as more information about them is revealed.
+* ''Characters can die.'' If a character dies, all revealed information about that character disappears from their profile.
+
+
+(display: "Return To Last Passage")
+}
+
+
+:: Inventory {"position":"300,200","size":"100,100"}
+{|InventoryBar>[(border: "dotted")+(box: "=XX=")+(bg:(hsl:0,0.2,0.2,0.4))[
+<script src="https://kit.fontawesome.com/9bd759d7b3.js" crossorigin="anonymous"></script>
+[<i class="fa-duotone fa-solid fa-backpack"></i>|]<Inventory_Button|
+|Inventory_)[ 
+	(unless: $backpack is (a:))[
+   (for: each _item, ...$backpack)[ 
+		(if: _item's revealed is true)[
+        	(set: _icon to _item's icon)
+            (link-goto: _icon, _item's goto )
+        ]
+    ]
+    ]
+]
+|1>[(collapse:)[
+	(click: ?Inventory_Button )[
+    	(show: ?Inventory)
+        (click:?Inventory_Button)[
+        	(hide: ?Inventory)(rerun: ?1)]
+            ]
+  ]
+]
+]
+]
+}
+
+
+:: Kirsten [CharacterCard exclude_history] {"position":"1025,325","size":"100,100"}
+=|=
+<img src="https://lh3.googleusercontent.com/d/1_XlhGHpQN5cEAvgiuZ86nt0Vo9rouDiO" width="600">
+=|=
+## Kirsten
+
+Born in a secluded monastery, Kirsten was nurtured in the arts of healing and quiet strength. Her gentle compassion and inner resilience inspire trust and unity among her allies.
+|==|
+($last_passage:)
+
+
+:: Lucas [CharacterCard exclude_history] {"position":"525,325","size":"100,100"}
+=|=
+<img src="https://lh3.googleusercontent.com/d/13DBA5zyXpuq-H0QRCw2KbvazdBJvcEol" width="600">
+=|=
+## Lucas
+
+Growing up on the unforgiving city streets, Lucas mastered stealth and clever trickery to survive. Beneath his roguish exterior lies a compassionate soul driven by loyalty and quick wit.
+|==|
+
+($last_passage:)
+
+
+:: Lucas's Map [InventoryTag exclude_history] {"position":"425,200","size":"100,100"}
+
+|the_map>[Lucas unfurls a worn, intricate map that seems to pulse with secrets. 
+
+The parchment depicts the sprawling expanse of Eldrath, with the Whispering Woods rendered in fine detail. 
+
+Hidden symbols mark various landmarks: a mysterious glade that might harbor the shard of the Heart of Aranthor, an ancient castle—Castle Greyfall—nestled on a rugged hill, and a faint trail leading toward the distant Crystalline Mountains. 
+
+Lucas's keen eyes pick up subtle clues in the faded ink—runes along the forest's edge and a series of intersecting paths that hint at both danger and opportunity—guiding the party toward their destiny.]
+
+(set: num-type $map_revealed to 1)
+{(set: _new_item to (a:(dm:"name", "map", "icon", "<i class='fa-regular fa-map'></i>", "goto", "Lucas's Map", "revealed", true)))
+(if: (none-pass: where its name is _new_item's 1st's name, ...$backpack) or $backpack is (a:))[
+(set: $backpack to $backpack + _new_item)]
+}
+(if: visits is 1)[(text-style: "superscript")[//Map has been added to Inventory//]]
+($last_passage:)
+
+
+:: Micah [CharacterCard exclude_history] {"position":"650,325","size":"100,100"}
+=|=
+<img src="https://lh3.googleusercontent.com/d/1ZS7eb3C5XBIaVtvQhL5DZmpX6XCOgMLX" width="600">
+=|=
+## Micah
+
+Once a renowned scholar in a prestigious academy, Micah lost everything in a war of knowledge and power. Now, his profound wisdom and mastery of ancient lore guide his companions through mystic perils.
+|==|
+($last_passage:)
+
+
+:: Micah's Texts [InventoryTag exclude_history] {"position":"550,200","size":"100,100"}
+
+Micah's ancient texts reveal that the Heart of Aranthor was shattered into three mystical shards—hidden respectively within the Whispering Woods, beneath Castle Greyfall, and guarded by a reclusive dragon in the Crystalline Mountains. Moreover, he deciphers cryptic incantations hinting at a long-forgotten ritual required to reunite the shards and unleash the artifact’s true power.
+
+(set: num-type $texts_revealed to 1)
+{
+(set: _new_item to (a:(dm: "name", "archives", "icon", "<i class='fa-regular fa-books'></i>", "goto", "Micah's Texts", "revealed", true)))
+(if: (none-pass: where its name is _new_item's 1st's name, ...$backpack) or $backpack is (a:))[
+(set: $backpack to $backpack + _new_item)]
+}
+(if: visits is 1)[(text-style: "superscript")[//Archives have been added to Inventory//]]
+($last_passage:)
+
+
+:: Sara [CharacterCard exclude_history] {"position":"1150,325","size":"100,100"}
+=|=
+<img src="https://lh3.googleusercontent.com/d/1Kc-EP2lphcf97nak-TgObp4koo8KNIIW" width="600">
+=|=
+## Sara
+
+Sara, a compassionate bard who once enjoyed a life of luxury, chose a wandering path to spread hope through her soulful music. Her empathetic spirit and resilient determination uplift those around her, even in the darkest times.
+|==|
+($last_passage:)
+
+
+:: Scene2S_1 {"position":"1125,725","size":"100,100"}
+{
+($set_background: "Settings/Brindleport%20Archives%20Blurred.png")
+(set: _starting_approval to $historian_approval)
+(set: _count to 1)
+}
+{(enchant: "Flickering", (text-style:"blink"))[The ancient archives of Brindleport stretch before the party as a long, arched hall of weathered stone and dark, polished wood. Tall shelves laden with leather-bound tomes line the walls, each volume whispering secrets of ages past. Flickering sconces cast dancing shadows on intricate carvings of mythical creatures and arcane symbols. The air carries the familiar scent of old parchment and candlewax, evoking a timeless mystery. ]}
+
+As the historian leads them deeper, every step resonates with the quiet echo of history waiting to be discovered.
+{
+["Huh?" the historian says. "Did you want to say something?"](historian1|
+    [{$choice[(link: "Cast a spell to rewind and say something different...")[
+ 	(set: $historian_approval to _starting_approval)
+    (rerun: ?page)
+    ]]
+    }
+  {  $choice[(link: "Proceed to say something else...")[
+    (set: _starting_approval to $historian_approval)
+    (show: ?historian2)
+    ]
+    
+    ]
+    }](choice1|
+["Yes?" The historian waits for a response.](historian2|
+    [{$choice[(link: "Cast a spell to rewind and say something different...")[
+ 	(set: $historian_approval to _starting_approval)
+    (rerun: ?page)
+    ]]
+    }
+  {  $choice[(link: "Proceed to say something else...")[
+    (set: _starting_approval to $historian_approval)
+    (show: ?historian3)
+    ]
+    
+    ]
+    }](choice2|
+["Yes?" The historian waits for a response.](historian3|
+    [{$choice[(link: "Cast a spell to rewind and say something different...")[
+ 	(set: $historian_approval to _starting_approval)
+    (rerun: ?page)
+    ]]
+    }
+  {  $choice[(link: "Proceed to say something else...")[
+    (set: _starting_approval to $historian_approval)
+    (show: ?historian4)
+    ]
+    
+    ]
+    }](choice3|
+["I think that's enough talking," the historian says. "We've arrived at the Archives of Aranthor. [[Scene2S_2]]](historian4|
+}
+(link: "Make Conversation")[{
+(show: ?historian1)
+(dropdown: bind _speaker1, "Tony", "Micah", "Lucas", "Kirsten", "Anmol", "Sara", "Caleb", "Danish") says something (dropdown: bind _tone1, "funny", "informative", "cruel", "polite").
+[<i class="fa-solid fa-paper-plane"></i>]<send|
+}
+(click: ?send)[
+	{
+    (display: "Scene2S_1_Dialogue")
+    (set: _chosen_dialogue to (find: _dialogue where _dialogue's character is _speaker1 and _dialogue's tone is _tone1, ...$s2s1_dialogue)'s 1st)
+    }
+   [(print: _speaker1): "(print: _chosen_dialogue's characters_quote)"
+    The historian pauses for a moment, turning to face (print: _speaker1).
+    {
+    (if: _chosen_dialogue's historians_approval_rating > 0)[
+    	His lips form a soft smile.
+    ]
+    (else:)[
+    	He frowns in blatant disgust.
+    ]
+    }
+   {"(print: _chosen_dialogue's historians_response)"
+    (set: $historian_approval to it + _chosen_dialogue's historians_approval_rating)}
+    ]<replace_conv01|
+    (show: ?choice1)
+]
+]
+
+
+:: Scene2S_1_Dialogue [Dialogue] {"position":"100,100","size":"100,100"}
+(set: $s2s1_dialogue to (a: 
+    (dm: "character", "Tony", "tone", "funny", "characters_quote", "These ancient pages are so venerable, they could probably school even me in valor—if I weren't too busy tripping over my own boots!", "historians_response", "Your humor is as bold as your stride, though it risks trivializing our sacred lore.", "historians_approval_rating", 3),
+	(dm: "character", "Tony", "tone", "informative", "characters_quote", "We are here to uncover the secrets of the Heart of Aranthor; every word in these tomes is a beacon on our path.", "historians_response", "A precise observation that shows your earnest pursuit of wisdom.", "historians_approval_rating", 4),
+	(dm: "character", "Tony", "tone", "cruel", "characters_quote", "I doubt these relics can teach you much if your memory is as foggy as these dusty shelves.", "historians_response", "That remark is uncalled for in these hallowed halls of knowledge.", "historians_approval_rating", -3),
+	(dm: "character", "Tony", "tone", "polite", "characters_quote", "I am grateful for your guidance, kind sir; your knowledge of these ancient texts illuminates our quest.", "historians_response", "Your respectful tone honors the sanctity of this archive.", "historians_approval_rating", 5),
+	(dm: "character", "Micah", "tone", "funny", "characters_quote", "I fear these scrolls might demand a reading fee in time, though my spectacles remain free of charge!", "historians_response", "A humorous quip that lightens the weight of our scholarly burden.", "historians_approval_rating", 2),
+	(dm: "character", "Micah", "tone", "informative", "characters_quote", "These manuscripts clearly delineate that the Heart of Aranthor's power is split among three ancient sites.", "historians_response", "A well-informed observation that deepens our understanding of the lore.", "historians_approval_rating", 4),
+	(dm: "character", "Micah", "tone", "cruel", "characters_quote", "I wonder if your recollections are as faded as these papyri, or if you actually recall their teachings.", "historians_response", "That cutting remark undercuts the respect due to our collective wisdom.", "historians_approval_rating", -2),
+	(dm: "character", "Micah", "tone", "polite", "characters_quote", "Might we peruse these texts together, so that the mysteries of the Heart may be fully unveiled?", "historians_response", "Your courteous approach fosters a fruitful exchange of knowledge.", "historians_approval_rating", 5),
+	(dm: "character", "Lucas", "tone", "funny", "characters_quote", "I bet this map in the back of my mind is older than these dusty folios, but at least these books are easier to read!", "historians_response", "A wry observation that brings levity to our serious pursuit.", "historians_approval_rating", 2),
+	(dm: "character", "Lucas", "tone", "informative", "characters_quote", "The inscriptions on these volumes clearly chart a course to where the Heart of Aranthor was last seen.", "historians_response", "An astute remark that sharpens our focus on the quest ahead.", "historians_approval_rating", 4),
+	(dm: "character", "Lucas", "tone", "cruel", "characters_quote", "It seems your memory is as outdated as these manuscripts, failing to recall the true path of lore.", "historians_response", "A harsh critique that disrupts the scholarly reverence of this place.", "historians_approval_rating", -4),
+	(dm: "character", "Lucas", "tone", "polite", "characters_quote", "Your expertise in these ancient records is invaluable; might you further illuminate the path to the Heart of Aranthor?", "historians_response", "A respectful inquiry that honors both tradition and learning.", "historians_approval_rating", 3),
+	(dm: "character", "Kirsten", "tone", "funny", "characters_quote", "If these tomes could sing, they'd serenade us with the ballads of old—though I doubt they'd hit the high notes!", "historians_response", "A delightful jest that softens the scholarly air.", "historians_approval_rating", 3),
+	(dm: "character", "Kirsten", "tone", "informative", "characters_quote", "These writings hint at a powerful healing magic intertwined with the Heart's legacy.", "historians_response", "An insightful comment that enriches our understanding of the lore.", "historians_approval_rating", 4),
+	(dm: "character", "Kirsten", "tone", "cruel", "characters_quote", "I fear your interpretations may lack the compassion needed to truly grasp these ancient truths.", "historians_response", "That remark is unnecessarily harsh and detracts from our unity.", "historians_approval_rating", -3),
+	(dm: "character", "Kirsten", "tone", "polite", "characters_quote", "Might we reflect upon these texts together, so that the gentle wisdom of the Heart may guide our journey?", "historians_response", "A graceful suggestion that nurtures both the mind and spirit.", "historians_approval_rating", 5),
+	(dm: "character", "Anmol", "tone", "funny", "characters_quote", "I’d wager even my clever contraptions are no match for the ingenious calligraphy of these relics!", "historians_response", "A witty remark that highlights your resourceful nature.", "historians_approval_rating", 3),
+	(dm: "character", "Anmol", "tone", "informative", "characters_quote", "These volumes are replete with symbols and sigils that detail the ancient rites surrounding the Heart of Aranthor.", "historians_response", "A perceptive observation that deepens our collective insight.", "historians_approval_rating", 4),
+	(dm: "character", "Anmol", "tone", "cruel", "characters_quote", "Perhaps your grasp of these symbols is as clumsy as your attempts at invention.", "historians_response", "A disparaging comment that undermines the spirit of collaboration.", "historians_approval_rating", -4),
+	(dm: "character", "Anmol", "tone", "polite", "characters_quote", "I suggest we carefully examine these inscriptions, for they might reveal the arcane secrets behind the Heart.", "historians_response", "Your thoughtful proposal is most welcome in these venerable halls.", "historians_approval_rating", 5),
+	(dm: "character", "Sara", "tone", "funny", "characters_quote", "I imagine these pages might dance a merry jig if they could, just like the tunes I compose!", "historians_response", "A charming jest that brightens the austere atmosphere of the archive.", "historians_approval_rating", 3),
+	(dm: "character", "Sara", "tone", "informative", "characters_quote", "The lyrical language of these texts suggests a legacy of ancient ballads that echo the Heart’s storied past.", "historians_response", "A poetic observation that deepens the lore with musical elegance.", "historians_approval_rating", 4),
+	(dm: "character", "Sara", "tone", "cruel", "characters_quote", "Your interpretations are as flat as a lute without strings—lacking both melody and insight.", "historians_response", "A harsh remark that does little to foster understanding.", "historians_approval_rating", -3),
+	(dm: "character", "Sara", "tone", "polite", "characters_quote", "May I offer a verse in tribute to these ancient words, to honor the memory of the Heart of Aranthor?", "historians_response", "Your graceful proposal adds a harmonious note to our scholarly pursuit.", "historians_approval_rating", 5),
+	(dm: "character", "Caleb", "tone", "funny", "characters_quote", "I reckon these tomes are tougher than any foe I've faced, yet far less likely to swing a sword!", "historians_response", "A hearty laugh that underscores your robust character.", "historians_approval_rating", 2),
+	(dm: "character", "Caleb", "tone", "informative", "characters_quote", "These texts reveal that the might of the Heart is as much a matter of spirit as of strength in battle.", "historians_response", "A valuable insight that bridges the art of war with ancient lore.", "historians_approval_rating", 4),
+	(dm: "character", "Caleb", "tone", "cruel", "characters_quote", "I doubt your musings hold any weight—like a rusted sword, they fail to strike true.", "historians_response", "That cutting comment is ill-suited for the reverence required here.", "historians_approval_rating", -4),
+	(dm: "character", "Caleb", "tone", "polite", "characters_quote", "I am eager to deliberate these passages further, that their enduring wisdom may fortify both our mind and might.","historians_response", "Your respectful inquiry is a testament to true leadership.", "historians_approval_rating", 5),
+	(dm: "character", "Danish", "tone", "funny", "characters_quote", "I find these ancient words as enigmatic as my own past—perhaps even more so!", "historians_response", "A mysterious jest that conceals deeper truths.", "historians_approval_rating", 2),
+	(dm: "character", "Danish", "tone", "informative", "characters_quote", "The lore inscribed here indicates that the Heart of Aranthor's balance shapes the destiny of our realm.", "historians_response", "An astute observation that reveals the gravity of our quest.", "historians_approval_rating", 4),
+	(dm: "character", "Danish", "tone", "cruel", "characters_quote", "One might think your understanding of these texts is as murky as the secrets you so carefully hide.", "historians_response", "A biting remark that casts shadows over your otherwise insightful nature.", "historians_approval_rating", -3),
+	(dm: "character", "Danish", "tone", "polite", "characters_quote", "I respectfully submit that these chronicles illuminate the path to the Heart's true nature; might you further elucidate this for us?","historians_response", "A refined and courteous contribution that deepens our mutual understanding.", "historians_approval_rating", 5)
+    )
+)
+
+
+:: Scene2S_2 {"position":"1250,725","size":"100,100"}
+{
+($set_background: "Settings/Brindleport%20Archives%20Blurred.png")
+}
+
+
+:: Secret 1 [SecretCard] {"position":"300,1000","size":"100,100"}
+Danish reveals to the group that the Heart of Aranthor is not merely a relic of ancient magic, but a living source of power that maintains the balance of Eldrath—if its shards are reunited properly, the realm could experience a great healing.
+
+(set: num-type $Danish_Secret_1 to 1) 
+
+($last_passage:)
+
+
+:: Secret 2 [SecretCard] {"position":"425,1000","size":"100,100"}
+Reassembling the Heart of Aranthor can also unlock forbidden rituals—one that he intends to exploit for his own dark ambitions, a truth he carefully conceals behind his mysterious demeanor.
+
+(set: num-type $Danish_Secret_2 to 1)
+
+($last_passage:)
+
+
+:: Setting 1 {"position":"675,600","size":"100,100"}
+|expo>[Our heroes find themselves in the bustling town of Brindleport, each with unique skills and dreams. 
+Rumors whisper of a lost artifact—the Heart of Aranthor—that can heal or destroy, and only the united strengths of these heroes can retrieve it. ]
+
+
+[[Continue->Chapter One]]
+(if: (history:) does not contain "Setting 1")[(enchant: ?passages's chars, via (t8n-delay:pos * 30) + (t8n:'instant'))]
+
+
+:: Title Card [TitleCard] {"position":"425,500","size":"200,200"}
+{($set_background: "Title%20Card%20%28blurred%29.png")
+(text-color: white)+(text-style: "outline", "expand")+(align:"==><==")[<h1>The Quest Of The Eight Realms</h1>]
+
+$title[
+    (link: "Accept The Quest")[
+        (dialog: [Pray, who among thee doth assume this noble charge?], "My name is...")
+        (set: _save_file to "")
+
+        (input: bind _save_file)
+
+        (live: 4s)[
+            (if: _save_file is not "")[
+                (set: _isSavedGame to (saved-games:) contains _save_file)
+                (replace: ?begin)[
+                    <tw-hook name="begin">
+                        (if: _isSavedGame)[
+                            (link: "Return to Previous Quest")[
+                                (set: $save_file to _save_file)
+                                (load-game: $save_file)
+                            ]
+                        ]
+                        (if: _isSavedGame is false)[
+                            (link: "Begin")[
+                                (set: $save_file to _save_file)
+                                (go-to: "Exposition 1")
+                            ]
+                        ]
+                    </tw-hook>
+                ]
+            ]
+        ]
+        
+        <tw-hook name="begin">[ ]</tw-hook>
+    ]
+]}
+
+
+
+[[Credits]]
+(link: "test")[(if: (saved-games:) contains "test")[(load-game: "test")]]
+
+
+:: Tony [CharacterCard exclude_history] {"position":"400,325","size":"100,100"}
+=|=
+<img src="https://lh3.googleusercontent.com/d/1wTHM-MTTSjwsxEWdGDXf_8iXukNfqyYw" width="600">
+=|=
+## Tony
+
+Raised in a humble village, Tony learned early that courage is forged in hardship and loss. His natural leadership and unyielding resolve drive him to seek redemption and glory on every quest.
+|==|
+
+($last_passage:)
+
+
+:: header [header] {"position":"300,75","size":"100,100"}
+{
+<script src="https://kit.fontawesome.com/9bd759d7b3.js" crossorigin="anonymous"></script>
+|Gameplay>[
+	(append: ?sidebar)[
+    	|info_button>[
+        	<i class="fa-solid fa-circle-info"></i>
+        ]
+        (click-goto: ?info_button, "Gameplay")
+    ]
+]
+|Save>[
+    (append: ?sidebar)[
+    |save_button)[<i class="fa-solid fa-floppy-disk"></i>]
+        (click: ?save_button)[($save:) (dialog: "The Game Has Been Saved!", "ok") (rerun: ?Save)]
+    ]
+    
+]
+|RestartCurrentChapter>[
+	(append: ?sidebar)[
+    	|return_button)[<i class="fa-solid fa-backward"></i>]
+        (click: ?return_button)[
+        	(if: (confirm: "Return to last save?"))[
+            	(unless:  $save_file is 0)[
+                	(load-game: $save_file)
+                ]
+            ]
+       ]
+    ]
+]
+|RestartGame>[
+	(append: ?sidebar)[
+    	|restart_button)[<i class="fa-solid fa-rotate-left"></i>]
+        (click: ?restart_button)[
+        	(if: (confirm: "Are you sure you wish to restart the game?"))[
+            	(go-to: "Exposition 1")
+            ]
+       ]
+    ]
+]
+
+|GoToCharacters>[
+	(append: ?sidebar)[
+    	|profile_button)[<i class="fa-solid fa-id-card"></i>]
+        (click: ?profile_button)[
+        	(dialog: bind _character, "", "Tony", "Lucas", "Micah", "Anmol", "Sara", "Caleb", "Kirsten", "Danish")
+            (event: when _character is not 0)[ (go-to: _character)]
+        ]
+    ]
+]
+<!--Comment Text-->
+(if: $characters is not 0)[
+(for: each _character, ...$characters)[
+	(enchant: _character, (text-colour:#cc5de8)+(text-style:"bold"))
+]
+]
+<!--Comment Text-->
+(set: $choice to (text-color:green))
+(set: $inventory_item to (text-color:yellow))
+(set: $objective to (text-color:red))
+(set: $title to (align:"==><==")+(text-style: "shadow"))
+
+(event: when $historian_approval > 0)[(append: ?sidebar)[(icon-counter: bind $historian_approval, "Approval")]]
+
+(event: when (saved-games:) contains $save_file)[ 
+  (show: ?save_button)
+  (show: ?return_button)
+  (show: ?restart_button)
+  (show: ?profile_button)
+]
+
+(if: (visited: "Chapter One"))[
+	(display: "Inventory")
+]
+
+}
+
+
+:: StoryScript [script]
+(function () {
+  $(document).on('keydown', function (ev) {
+    if (ev.key === ' ') {
+      
+      /*Audio */
+      let $playButton = $('#play-music');
+      let $audio = $('#background-audio');
+
+      if ($playButton.length && $audio.length) {
+        ev.preventDefault(); // Prevent spacebar from scrolling the page
+        $audio[0].play();
+        $playButton.hide(); // Hide button after play
+      }
+    }
+    
+    
+  });
+  
+}());
+
+
+
+
+
+:: StoryStylesheet [stylesheet]
+tw-sidebar *{
+    color: pink; /* Change color */
+    font-size: 24px; /* Increase size */
+}
+
+tw-passage {
+  padding-top: 10px;
+}
+
+tw-story {
+  padding-top: 20px;
+}
+
+tw-hook[name="inventorybar"] {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+tw-hook[name="inventory_button"] {
+  display:inline-block;
+  padding: 5px;
+}
+
+tw-hook[name="inventory"] {
+  display:inline-block;
+}
+
+tw-hook[name="inventory"] tw-hook{
+  padding: 5px;
+}
+
+.audio-btn {
+  background-color: #ffffff30;
+  border: none; /* Remove borders */
+  color: white; 
+  cursor: pointer; /* Mouse pointer on hover */
+}
+
+/* Darker background on mouse-over */
+.audio-btn:hover {
+  background-color: RoyalBlue;
+}
+
